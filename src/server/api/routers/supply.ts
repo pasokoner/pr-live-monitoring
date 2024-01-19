@@ -39,6 +39,22 @@ export const supplyRouter = createTRPCRouter({
         message: "PR Deleted",
       };
     }),
+  undo: receiverProcedure
+    .input(
+      z.object({
+        supplyId: z.string(),
+      }),
+    )
+    .mutation(async ({ input, ctx }) => {
+      await ctx.db
+        .update(supply)
+        .set({ outDate: null })
+        .where(eq(supply.id, input.supplyId));
+
+      return {
+        message: "PR Undo",
+      };
+    }),
   confirm: focalProcedure.input(z.string()).mutation(async ({ ctx, input }) => {
     return await ctx.db
       .update(supply)

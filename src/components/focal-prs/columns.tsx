@@ -57,3 +57,19 @@ export const columns: ColumnDef<Supply>[] = [
     },
   },
 ];
+
+export const outColumns: ColumnDef<Supply>[] = [
+  {
+    accessorKey: "prControl",
+    header: "PR Control",
+  },
+  {
+    accessorKey: "date",
+    header: "Date",
+    cell: ({ row }) => {
+      const dateFormat = format(row.getValue("date"), "MM/dd/yyyy");
+
+      return <div>{dateFormat}</div>;
+    },
+  },
+];

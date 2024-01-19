@@ -2,7 +2,7 @@
 
 import React from "react";
 import { DataTable } from "./focal-prs/data-table";
-import { columns } from "./focal-prs/columns";
+import { columns, outColumns } from "./focal-prs/columns";
 import { api } from "@/trpc/react";
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -37,7 +37,7 @@ export default function FocalPage() {
         <DataTable data={inPr!} columns={columns} />
       </TabsContent>
       <TabsContent value="Out">
-        <DataTable data={outPr!} columns={columns} />
+        <DataTable data={outPr!} columns={outColumns} />
       </TabsContent>
     </Tabs>
   );
